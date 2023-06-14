@@ -78,6 +78,7 @@ score2=0
 liste=[] 
 sayac=0
 take=[]
+games=[]
 player=1
 #root.attributes('-fullscreen', True)
 gimg=ImageTk.PhotoImage(Image.open("imgs/bg7.jpg"))
@@ -131,6 +132,7 @@ def slp():
     time.sleep(0.5)
 
     if liste[0]==liste[1]:
+        trac_game("Closed_Boxes")
         score=int(score)
         score2=int(score2)
         if player==1:
@@ -250,14 +252,40 @@ def slp():
 
 
     
-        
+def trac_game(info):
+    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div1,boxes
+    score,box17,box18,box19,box20,box21,box22,box23,box24
+    global games
+    games.append(info)
+    if len(games)==12:
+        show_in()
 
+
+def show_in():
+    global div112
+    time.sleep(2)
+    div.destroy()
+    div1.destroy()
+    div112=Frame(root,bg="#2E8B57")
+    div112.grid(row=1,column=0,ipadx=900,ipady=340)
+
+    if score>score2:
+        winlab=Label(div112,text="Winner is Player1 Score :",fg="white",bg="#282828",font=("Times",42))
+        
+    else:
+        winlab=Label(div112,text="Winner is Player2 Score :",fg="white",bg="#282828",font=("Times",42))
+    
+    winlab.place(x=380,y=302)
     
     
+  
+
+ 
 
 def scoree():
     global div1,boxes,ggame,remove,score,score2,box17,box18,box19,box20,box21,box22,box23,box24,div1,div2,boxes,ggame,remove,div3,info
     global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,remove,take
+    
     for i in boxes:
         if i==1:
             box1.config(command=lambda :play(1))
@@ -381,57 +409,82 @@ def new_game():
     liste.append(i11)
     liste.append(i12)
     liste.append(i12)
-
+    cc=[]
     img1=random.choice(liste)
+    
     liste.remove(img1)
     img2=random.choice(liste)
+    
     liste.remove(img2)
     img3=random.choice(liste)
+    
     liste.remove(img3)
     img4=random.choice(liste)
+    
     liste.remove(img4)
     img5=random.choice(liste)
+    
     liste.remove(img5)
     img6=random.choice(liste)
+    
     liste.remove(img6)
     img7=random.choice(liste)
+    
     liste.remove(img7)
     img8=random.choice(liste)
+    
     liste.remove(img8)
     img9=random.choice(liste)
+    
     liste.remove(img9)
     img10=random.choice(liste)
+    
     liste.remove(img10)
     img11=random.choice(liste)
+    
     liste.remove(img11)
     img12=random.choice(liste)
+    
     liste.remove(img12)
     img13=random.choice(liste)
+    
     liste.remove(img13)
     img14=random.choice(liste)
+    
     liste.remove(img14)
     img15=random.choice(liste)
+    
     liste.remove(img15)
     img16=random.choice(liste)
+    
     liste.remove(img16)
     img17=random.choice(liste)
+    
     liste.remove(img17)   
     img18=random.choice(liste)
+    
     liste.remove(img18)
     img19=random.choice(liste)
+    
     liste.remove(img19)
     img20=random.choice(liste)
+    
     liste.remove(img20)
     img21=random.choice(liste)
+    
     liste.remove(img21)
     img22=random.choice(liste)
+    
     liste.remove(img22)
     img23=random.choice(liste)
+    
     liste.remove(img23)
     img24=random.choice(liste)
-    liste.remove(img24)
     
+    liste.remove(img24)
+   
     frames()
+    
 
 
 
@@ -444,6 +497,7 @@ def new_game():
 
 
 def frames():
+   
     global div1,div2,boxes,ggame,remove,div3,info
     div1=Frame(root,bg="#2E8B57")
     div1.grid(row=0,column=0,ipadx=900,ipady=340)
@@ -464,6 +518,7 @@ def frames():
 def game():
     global div1,boxes,ggame,remove,score,score2,box17,box18,box19,box20,box21,box22,box23,box24,div1,div2,boxes,ggame,remove,div3,info
     global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,remove,take
+    
     box1=Button(div1,command=lambda :play(1),bg="#1c2127",image=logo2)
     box2=Button(div1,command=lambda :play(2),bg="#1c2127",image=logo2)
     box3=Button(div1,command=lambda :play(3),bg="#1c2127",image=logo2)
@@ -727,6 +782,7 @@ def restart():
     div1.destroy()
     div2.destroy()
     div3.destroy()
+    div112.destroy()
     for i in range(len(liste)):
         liste.pop(0)
     for i in range(len(take)):
@@ -762,10 +818,11 @@ def infoo():
 
 def menuu():
     pass
-    global score,score2,div1,div2,div3,info
+    global score,score2,div1,div2,div3,info,div112
     div1.destroy()
     div2.destroy()
     div3.destroy()
+    div112.destroy()
     root.attributes('-fullscreen', False)
     for i in range(len(liste)):
         liste.pop(0)
