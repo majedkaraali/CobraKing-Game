@@ -409,7 +409,7 @@ def new_game():
     liste.append(i11)
     liste.append(i12)
     liste.append(i12)
-    cc=[]
+
     img1=random.choice(liste)
     
     liste.remove(img1)
