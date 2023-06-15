@@ -270,10 +270,10 @@ def show_in():
     div112.grid(row=1,column=0,ipadx=900,ipady=340)
 
     if score>score2:
-        winlab=Label(div112,text="Winner is Player1 Score :",fg="white",bg="#282828",font=("Times",42))
+        winlab=Label(div112,text="Winner is Player1  ",fg="white",bg="#282828",font=("Times",42))
         
     else:
-        winlab=Label(div112,text="Winner is Player2 Score :",fg="white",bg="#282828",font=("Times",42))
+        winlab=Label(div112,text="Winner is Player2  ",fg="white",bg="#282828",font=("Times",42))
     
     winlab.place(x=380,y=302)
     

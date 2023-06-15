@@ -75,6 +75,7 @@ liste=[]
 sayac=0
 take=[]
 player=1
+games=[]
 #root.attributes('-fullscreen', True)
 gimg=ImageTk.PhotoImage(Image.open("imgs/bg7.jpg"))
 
@@ -127,6 +128,7 @@ def slp():
     time.sleep(0.5)
 
     if liste[0]==liste[1]:
+        trac_game("Played")
         score=int(score)
         score2=int(score2)
         if player==1:
@@ -245,8 +247,29 @@ def slp():
 
 
 
-    
+def trac_game(info):
+    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div1,boxes
+    score,box17,box18,box19,box20,box21,box22,box23,box24
+    global games
+    games.append(info)
+    if len(games)==12:
+        show_in()
+
+def show_in():
+    global div112
+    time.sleep(2)
+    div.destroy()
+    div1.destroy()
+    div112=Frame(root,bg="#2E8B57")
+    div112.grid(row=1,column=0,ipadx=900,ipady=340)
+
+    if score>score2:
+        winlab=Label(div112,text="Winner is Player1",fg="white",bg="#282828",font=("Times",42))
         
+    else:
+        winlab=Label(div112,text="Winner is Player2",fg="white",bg="#282828",font=("Times",42))
+    
+    winlab.place(x=380,y=302)       
 
     
     
@@ -712,6 +735,7 @@ def restart():
     div1.destroy()
     div2.destroy()
     div3.destroy()
+    div112.destroy()
     for i in range(len(liste)):
         liste.pop(0)
     for i in range(len(take)):
@@ -750,6 +774,7 @@ def menuu():
     div1.destroy()
     div2.destroy()
     div3.destroy()
+    div112.destroy()
 
     for i in range(len(liste)):
         liste.pop(0)
