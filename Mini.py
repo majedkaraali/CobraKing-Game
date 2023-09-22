@@ -64,7 +64,7 @@ import threading
 root=Tk()
 root.title("CobraKing")
 root.iconbitmap("imgs/1c.ico")
-#root.geometry("800x600")
+#root
 
 
 ggame=0
