@@ -10,13 +10,7 @@ import time
 def install(package):
     subprocess.call([sys.executable, "-m", "pip", "install", package])
 
-def harf_yazma(a):
-    b=""
-    for i in a:
-        b+=i
-        print(b,end="\r")
-        time.sleep(0.1)
-#harf_yazma("-Code By Majed")
+
 print("-Code By Majed")
 
 
