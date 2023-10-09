@@ -49,7 +49,6 @@ except:
         print("[EXCEPTION] Pip not installed on system")
 
 ##########################################################################################
-# MaJeDo
 
 
 from tkinter import *
