@@ -62,6 +62,9 @@ root.title("CobraKing")
 root.iconbitmap("imgs/1c.ico")
 #root.geometry("800x600")
 
+boxes_=[]
+images_=[]
+
 
 ggame=0
 win=0
@@ -364,7 +367,7 @@ def scoree():
 def new_game():
     root.attributes('-fullscreen', True)
     global boxes,liste,img17,img18,img19,img20,img21,img22,img23,img24,info, div1,div2,boxes,ggame,remove,div3,info
-    global logo2,img1,img2,img3,img4,img5,img6,img7,img8,gimg,bac,img9,img10,img11,img12,img13,img14,img15,img16,div22
+    global images_,logo2,img1,img2,img3,img4,img5,img6,img7,img8,gimg,bac,img9,img10,img11,img12,img13,img14,img15,img16,div22
     div22.destroy()
     boxes=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     if len(liste)>0:
@@ -413,7 +416,7 @@ def new_game():
     liste.append(i12)
 
     img1=random.choice(liste)
-    
+
     liste.remove(img1)
     img2=random.choice(liste)
     
@@ -484,7 +487,9 @@ def new_game():
     img24=random.choice(liste)
     
     liste.remove(img24)
-   
+
+    images_.extend([img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20,img21,img22,img23,img24])
+    print(images_)
     frames()
     
 
@@ -519,7 +524,7 @@ def frames():
     
 def game():
     global div1,boxes,ggame,remove,score,score2,box17,box18,box19,box20,box21,box22,box23,box24,div1,div2,boxes,ggame,remove,div3,info
-    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,remove,take
+    global boxes_,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,remove,take
     
     box1=Button(div1,command=lambda :play(1),bg="#1c2127",image=logo2)
     box2=Button(div1,command=lambda :play(2),bg="#1c2127",image=logo2)
@@ -572,9 +577,10 @@ def game():
     box22.place(x=800,y=342)
     box23.place(x=958,y=342)
     box24.place(x=1116,y=342)
-    
 
 
+    boxes_.extend([box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,box17,box18,box19,box20,box21,box22,box23,box24])
+    print(boxes_)
 
 
 
@@ -605,168 +611,20 @@ def play(a):
     global div1,div2,boxes,ggame,remove,div3,info,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,div1,remove,take,ggame,info
     ggame+=1
     
-    if a==1:
-        box1['command'] = 0
-        box1.config(image=img1,bg="white")
+    # if a==1:
+    #     box1['command'] = 0
+    #     box1.config(image=img1,bg="white")
 
-        sayac+=1
-        liste.append(img1)
-        take.append(a)
-    elif a==2:
-        box2['command'] = 0
-        box2.config(image=img2,bg="white")
-        sayac+=1
-        liste.append(img2)
-        take.append(a)
-    elif a==3:
+    #     sayac+=1
+    #     liste.append(img1)
+    #     take.append(a)
 
-        box3.config(image=img3,bg="white")
-        sayac+=1
-        liste.append(img3)
-        take.append(a)
-    elif a==4:
-        box4['command'] = 0
-        box4.config(image=img4,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img4)
-        take.append(a)
 
-    elif a==5:
-        box5['command'] = 0
-        box5.config(image=img5,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img5)
-        take.append(a)
-        box5['command'] = 0
-    elif a==6:
-        box6['command'] = 0
-        box6.config(image=img6,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img6)
-        take.append(a)
-          
-    elif a==7:
-        box7['command'] = 0
-        box7.config(image=img7,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img7)
-        take.append(a)
-        
-    elif a==8:
-        box8['command'] = 0
-        box8.config(image=img8,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img8)
-        take.append(a)
-    elif a==9:
-        box9['command'] = 0
-        box9.config(image=img9,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img9)
-        take.append(a)
-        
-
-    elif a==10:
-        box10['command'] = 0
-        box10.config(image=img10,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img10)
-        take.append(a)
-        
-    elif a==11:
-        box11['command'] = 0
-        box11.config(image=img11,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img11)
-        take.append(a)
-        
-    elif a==12:
-        box12['command'] = 0
-        box12.config(image=img12,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img12)
-        take.append(a)
-        
-        
-    elif a==13:
-        box13['command'] = 0
-        box13.config(image=img13,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img13)
-        take.append(a)
-        
-        
-    elif a==14:
-        box14['command'] = 0
-        box14.config(image=img14,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img14)
-        take.append(a)
-        
-        
-    elif a==15:
-        box15['command'] = 0
-        box15.config(image=img15,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img15)
-        take.append(a)
-            
-    elif a==16:
-        box16['command'] = 0
-        box16.config(image=img16,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img16)
-        take.append(a)
-    elif a==17:
-        box17['command'] = 0
-        box17.config(image=img17,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img17)
-        take.append(a)
-    elif a==18:
-        box18['command'] = 0
-        box18.config(image=img18,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img18)
-        take.append(a)
-    elif a==19:
-        box19['command'] = 0
-        box19.config(image=img19,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img19)
-        take.append(a)
-    elif a==20:
-        box20['command'] = 0
-        box20.config(image=img20,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img20)
-        take.append(a)
-    elif a==21:
-        box21['command'] = 0
-        box21.config(image=img21,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img21)
-        take.append(a)
-    elif a==22:
-        box22['command'] = 0
-        box22.config(image=img22,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img22)
-        take.append(a)
-    elif a==23:
-        box23['command'] = 0
-        box23.config(image=img23,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img23)
-        take.append(a)
-    elif a==24:
-        box24['command'] = 0
-        box24.config(image=img24,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img24)
-        take.append(a)
-    
-               
+    boxes_[a-1]['command'] = 0
+    boxes_[a-1].config(image=img1,bg="white")
+    liste.append(images_[a-1])
+    take.append(a)
+    sayac+=1   
         
     if sayac==2:
         sayac=0
