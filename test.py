@@ -108,38 +108,19 @@ def lounch():
 
 
 def slp():
-    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,div1,boxes
-    global take,remove,win,score,player,score2,box17,box18,box19,box20,box21,box22,box23,box24,info
-    box1.config(command="None")
-    box2.config(command="None")
-    box3.config(command="None")
-    box4.config(command="None")
-    box5.config(command="None")
-    box6.config(command="None")
-    box7.config(command="None")
-    box8.config(command="None")
-    box9.config(command="None")
-    box10.config(command="None")
-    box11.config(command="None")
-    box12.config(command="None")
-    box13.config(command="None")
-    box14.config(command="None")
-    box15.config(command="None")
-    box16.config(command="None")
-    box17.config(command="None")
-    box18.config(command="None")
-    box19.config(command="None")
-    box20.config(command="None")
-    box21.config(command="None")
-    box22.config(command="None")
-    box23.config(command="None")
-    box24.config(command="None")
+    global sayac,div2,div1,boxes,boxes_
+    global take,remove,win,score,player,score2,info
+
+    for box in boxes_:
+        box.config(command="None")
+ 
     time.sleep(0.5)
 
     if liste[0]==liste[1]:
         trac_game("Closed_Boxes")
         score=int(score)
         score2=int(score2)
+
         if player==1:
             player=1
             score+=10
@@ -149,13 +130,12 @@ def slp():
             
         win=1
        
-        for i in take:
-            boxes.remove(i)
+        take.clear()
         
-        wr=Label(div2,text="Correct!  ",fg="green",font=("BLOD",18),bg="#282828")
-        wr.place(x=580,y=15)
+        crr=Label(div2,text="Correct!  ",fg="green",font=("BLOD",18),bg="#282828")
+        crr.place(x=580,y=15)
         time.sleep(1)
-        wr.destroy()
+        crr.destroy()
 
         
         
@@ -277,8 +257,10 @@ def show_in():
     if score>score2:
         winlab=Label(div112,text="Winner is Player1  ",fg="white",bg="#282828",font=("Times",42))
         
-    else:
+    elif  score<score2:
         winlab=Label(div112,text="Winner is Player2  ",fg="white",bg="#282828",font=("Times",42))
+    else:
+        winlab=Label(div112,text="No Winner   ,   TIE  ",fg="white",bg="#282828",font=("Times",42))
     
     winlab.place(x=380,y=302)
     
@@ -489,7 +471,6 @@ def new_game():
     liste.remove(img24)
 
     images_.extend([img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20,img21,img22,img23,img24])
-    print(images_)
     frames()
     
 
@@ -580,7 +561,6 @@ def game():
 
 
     boxes_.extend([box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,box17,box18,box19,box20,box21,box22,box23,box24])
-    print(boxes_)
 
 
 
@@ -608,7 +588,7 @@ def game():
     
 def play(a):
     
-    global div1,div2,boxes,ggame,remove,div3,info,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,div1,remove,take,ggame,info
+    global boxes_ ,div1,div2,boxes,ggame,remove,div3,info,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,div1,remove,take,ggame,info
     ggame+=1
     
     # if a==1:
@@ -619,9 +599,10 @@ def play(a):
     #     liste.append(img1)
     #     take.append(a)
 
+  #  print(images_[a-1]['command'])
 
-    boxes_[a-1]['command'] = 0
-    boxes_[a-1].config(image=img1,bg="white")
+    boxes_[a-1].config(command = 0)
+    boxes_[a-1].config(image=images_[a-1],bg="white")
     liste.append(images_[a-1])
     take.append(a)
     sayac+=1   
