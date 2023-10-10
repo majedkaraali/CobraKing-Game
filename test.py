@@ -107,10 +107,14 @@ def lounch():
     info.place(x=690,y=10)
 
 
-def slp():
+
+
+
+def check():
     global sayac,div2,div1,boxes,boxes_
     global take,remove,win,score,player,score2,info
-
+    print('CHEEEEEEEEEEEEEEEk')
+    # THIS LOCKS OTHER BOXES 
     for box in boxes_:
         box.config(command="None")
  
@@ -130,7 +134,7 @@ def slp():
             
         win=1
        
-        take.clear()
+        
         
         crr=Label(div2,text="Correct!  ",fg="green",font=("BLOD",18),bg="#282828")
         crr.place(x=580,y=15)
@@ -149,22 +153,18 @@ def slp():
         wr.place(x=580,y=15)
         time.sleep(1)
         wr.destroy()
+        print('>>>>>>>>>assssssssssssssdddddddd')
 
-        print(take)
-
-        # for i in take:
-        #     # if i ==1:
-        #     #     box1=Button(div1,command=lambda :play(1),bg="#1c2127",image=logo2)
-        #     #     box1.place(x=10,y=10)
-
-        
+        for i in range(1,25):
+            print(i,'done')
+            boxes_[i-1].config(command=lambda :play(i),bg="#1c2127",image=logo2)
             
-        #     boxes_[i-1].config(command = 1)
-        #     boxes_[i-1].config(image=logo2,bg="#1c2127",command=lambda :play(i))
-           
-    for i in boxes:
-        boxes_[i-1].config(image=logo2,bg="#1c2127",command=lambda :play(i))
-    
+
+
+    print(take)
+    print(liste,'ls')
+
+    take.clear()
     if len(liste)>1:
         for i in range(len(liste)):
             liste.pop(0)
@@ -214,13 +214,9 @@ def show_in():
 def scoree():
     global div1,boxes,ggame,remove,score,score2,div1,div2,boxes,ggame,remove,div3
     global boxes_,sayac,div2,remove,take
-    print(boxes_)
+ 
     
-  
-       
-   
-    
-    
+    print(take)
     
     score=str(score)
     score2=str(score2)
@@ -498,7 +494,7 @@ def play(a):
         
     if sayac==2:
         sayac=0
-        threading.Thread(target=slp).start()
+        threading.Thread(target=check).start()
         
     print(take)
              
