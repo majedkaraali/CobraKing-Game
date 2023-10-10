@@ -149,79 +149,21 @@ def slp():
         wr.place(x=580,y=15)
         time.sleep(1)
         wr.destroy()
-        for i in take:
-            if i ==1:
-                box1=Button(div1,command=lambda :play(1),bg="#1c2127",image=logo2)
-                box1.place(x=10,y=10)
-            elif i==2:
-                box2=Button(div1,command=lambda :play(2),bg="#1c2127",image=logo2)
-                box2.place(x=168,y=10)
-            elif i==3:
-                box3=Button(div1,command=lambda :play(3),bg="#1c2127",image=logo2)
-                box3.place(x=326,y=10)
-            elif i==4:
-                box4=Button(div1,command=lambda :play(4),bg="#1c2127",image=logo2)
-                box4.place(x=484,y=10)
-            elif i==5:
-                box5=Button(div1,command=lambda :play(5),bg="#1c2127",image=logo2)
-                box5.place(x=642,y=10)
-            elif i==6:
-                box6=Button(div1,command=lambda :play(6),bg="#1c2127",image=logo2)
-                box6.place(x=800,y=10)
-            elif i==7:
-                box7=Button(div1,command=lambda :play(7),bg="#1c2127",image=logo2)
-                box7.place(x=958,y=10)
-            elif i==8:
-                box8=Button(div1,command=lambda :play(8),bg="#1c2127",image=logo2)
-                box8.place(x=1116,y=10)
-            elif i==9:
-                box9=Button(div1,command=lambda :play(9),bg="#1c2127",image=logo2)
-                box9.place(x=10,y=176)
-            elif i==10:
-                box10=Button(div1,command=lambda :play(10),bg="#1c2127",image=logo2)
-                box10.place(x=168,y=176)
-            elif i==11:
-                box11=Button(div1,command=lambda :play(11),bg="#1c2127",image=logo2)
-                box11.place(x=326,y=176)
-            elif i==12:
-                box12=Button(div1,command=lambda :play(12),bg="#1c2127",image=logo2)
-                box12.place(x=484,y=176)
-            elif i==13:
-                box13=Button(div1,command=lambda :play(13),bg="#1c2127",image=logo2)
-                box13.place(x=642,y=176)
-            elif i==14:
-                box14=Button(div1,command=lambda :play(14),bg="#1c2127",image=logo2)
-                box14.place(x=800,y=176)
-            elif i==15:
-                box15=Button(div1,command=lambda :play(15),bg="#1c2127",image=logo2)
-                box15.place(x=958,y=176)
-            elif i==16:
-                box16=Button(div1,command=lambda :play(16),bg="#1c2127",image=logo2)
-                box16.place(x=1116,y=176)
-            elif i==17:
-                box17=Button(div1,command=lambda :play(17),bg="#1c2127",image=logo2)
-                box17.place(x=10,y=342)
-            elif i==18:
-                box18=Button(div1,command=lambda :play(18),bg="#1c2127",image=logo2)
-                box18.place(x=168,y=342)
-            elif i==19:
-                box19=Button(div1,command=lambda :play(19),bg="#1c2127",image=logo2)
-                box19.place(x=326,y=342)
-            elif i==20:
-                box20=Button(div1,command=lambda :play(20),bg="#1c2127",image=logo2)
-                box20.place(x=484,y=342)
-            elif i==21:
-                box21=Button(div1,command=lambda :play(21),bg="#1c2127",image=logo2)
-                box21.place(x=642,y=342)
-            elif i==22:
-                box22=Button(div1,command=lambda :play(22),bg="#1c2127",image=logo2)
-                box22.place(x=800,y=342)
-            elif i==23:
-                box23=Button(div1,command=lambda :play(23),bg="#1c2127",image=logo2)
-                box23.place(x=958,y=342)
-            elif i==24:
-                box24=Button(div1,command=lambda :play(24),bg="#1c2127",image=logo2)
-                box24.place(x=1116,y=342)
+
+        print(take)
+
+        # for i in take:
+        #     # if i ==1:
+        #     #     box1=Button(div1,command=lambda :play(1),bg="#1c2127",image=logo2)
+        #     #     box1.place(x=10,y=10)
+
+        
+            
+        #     boxes_[i-1].config(command = 1)
+        #     boxes_[i-1].config(image=logo2,bg="#1c2127",command=lambda :play(i))
+           
+    for i in boxes:
+        boxes_[i-1].config(image=logo2,bg="#1c2127",command=lambda :play(i))
     
     if len(liste)>1:
         for i in range(len(liste)):
@@ -270,59 +212,14 @@ def show_in():
  
 
 def scoree():
-    global div1,boxes,ggame,remove,score,score2,box17,box18,box19,box20,box21,box22,box23,box24,div1,div2,boxes,ggame,remove,div3,info
-    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,remove,take
+    global div1,boxes,ggame,remove,score,score2,div1,div2,boxes,ggame,remove,div3
+    global boxes_,sayac,div2,remove,take
+    print(boxes_)
     
-    for i in boxes:
-        if i==1:
-            box1.config(command=lambda :play(1))
-        elif i==2:
-            box2.config(command=lambda :play(2))
-        elif i==3:
-            box3.config(command=lambda :play(3))
-        elif i==4:
-            box4.config(command=lambda :play(4))
-        elif i==5:
-            box5.config(command=lambda :play(5))
-        elif i==6:
-            box6.config(command=lambda :play(6))
-        elif i==7:
-            box7.config(command=lambda :play(7))
-        elif i==8:
-            box8.config(command=lambda :play(8))
-        elif i==9:
-            box9.config(command=lambda :play(9))
-        elif i==10:
-            box10.config(command=lambda :play(10))
-        elif i==11:
-            box11.config(command=lambda :play(11))
-        elif i==12:
-            box12.config(command=lambda :play(12))
-        elif i==13:
-            box13.config(command=lambda :play(13))
-        elif i==14:
-            box14.config(command=lambda :play(14))
-        elif i==15:
-            box15.config(command=lambda :play(15))
-        elif i==16:
-            box16.config(command=lambda :play(16))
-        elif i==17:
-            box17.config(command=lambda :play(17))
-        elif i==18:
-            box18.config(command=lambda :play(18))
-        elif i==19:
-            box19.config(command=lambda :play(19))
-        elif i==20:
-            box20.config(command=lambda :play(20))
-        elif i==21:
-            box21.config(command=lambda :play(21))
-        elif i==22:
-            box22.config(command=lambda :play(22))
-        elif i==23:
-            box23.config(command=lambda :play(23))
-        elif i==24:
-            box24.config(command=lambda :play(24))
-
+  
+       
+   
+    
     
     
     score=str(score)
@@ -347,7 +244,7 @@ def scoree():
     
     
 def new_game():
-    root.attributes('-fullscreen', True)
+ #   root.attributes('-fullscreen', True)
     global boxes,liste,img17,img18,img19,img20,img21,img22,img23,img24,info, div1,div2,boxes,ggame,remove,div3,info
     global images_,logo2,img1,img2,img3,img4,img5,img6,img7,img8,gimg,bac,img9,img10,img11,img12,img13,img14,img15,img16,div22
     div22.destroy()
@@ -590,16 +487,8 @@ def play(a):
     
     global boxes_ ,div1,div2,boxes,ggame,remove,div3,info,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,div1,remove,take,ggame,info
     ggame+=1
+
     
-    # if a==1:
-    #     box1['command'] = 0
-    #     box1.config(image=img1,bg="white")
-
-    #     sayac+=1
-    #     liste.append(img1)
-    #     take.append(a)
-
-  #  print(images_[a-1]['command'])
 
     boxes_[a-1].config(command = 0)
     boxes_[a-1].config(image=images_[a-1],bg="white")
@@ -611,7 +500,7 @@ def play(a):
         sayac=0
         threading.Thread(target=slp).start()
         
- 
+    print(take)
              
         
 
