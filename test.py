@@ -142,6 +142,8 @@ def check():
         crr.destroy()
 
         
+
+        
         
     else:
         if player==1:
@@ -162,7 +164,7 @@ def check():
 
 
     print(take)
-    print(liste,'ls')
+    print(liste,'ls') 
 
     take.clear()
     if len(liste)>1:
