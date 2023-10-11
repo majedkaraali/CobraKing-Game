@@ -144,6 +144,8 @@ def check():
         
 
         
+
+
         
     else:
         if player==1:
