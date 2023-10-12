@@ -108,7 +108,7 @@ def lounch():
 
 
 
-
+    
 
 def check():
     global sayac,div2,div1,boxes,boxes_
@@ -240,6 +240,8 @@ def scoree():
     
     
 
+
+    
 
     
     
