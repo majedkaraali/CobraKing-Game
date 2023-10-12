@@ -242,8 +242,9 @@ def scoree():
 
 
     
-
     
+
+
     
 def new_game():
  #   root.attributes('-fullscreen', True)
