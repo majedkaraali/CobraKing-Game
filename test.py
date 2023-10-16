@@ -161,10 +161,34 @@ def check():
         wr.destroy()
         print('>>>>>>>>>assssssssssssssdddddddd')
 
-        for i in range(1,25):
-            print(i,'done')
-            boxes_[i-1].config(command=lambda :play(i),bg="#1c2127",image=logo2)
-            
+        # for i in range(1,25):
+        #     print(i,'done')
+        #     boxes_[i-1].config(command=lambda :play(i),bg="#1c2127",image=logo2)
+
+        boxes_[0].config(command=lambda :play(1),bg="#1c2127",image=logo2)
+        boxes_[1].config(command=lambda :play(2),bg="#1c2127",image=logo2)
+        boxes_[2].config(command=lambda :play(3),bg="#1c2127",image=logo2)
+        boxes_[3].config(command=lambda :play(4),bg="#1c2127",image=logo2)
+        boxes_[4].config(command=lambda :play(5),bg="#1c2127",image=logo2)
+        boxes_[5].config(command=lambda :play(6),bg="#1c2127",image=logo2)
+        boxes_[6].config(command=lambda :play(7),bg="#1c2127",image=logo2)
+        boxes_[7].config(command=lambda :play(8),bg="#1c2127",image=logo2)
+        boxes_[8].config(command=lambda :play(9),bg="#1c2127",image=logo2)
+        boxes_[9].config(command=lambda :play(10),bg="#1c2127",image=logo2)
+        boxes_[10].config(command=lambda :play(11),bg="#1c2127",image=logo2)
+        boxes_[11].config(command=lambda :play(12),bg="#1c2127",image=logo2)
+        boxes_[12].config(command=lambda :play(13),bg="#1c2127",image=logo2)
+        boxes_[13].config(command=lambda :play(14),bg="#1c2127",image=logo2)
+        boxes_[14].config(command=lambda :play(15),bg="#1c2127",image=logo2)
+        boxes_[15].config(command=lambda :play(16),bg="#1c2127",image=logo2)
+        boxes_[16].config(command=lambda :play(17),bg="#1c2127",image=logo2)
+        boxes_[17].config(command=lambda :play(18),bg="#1c2127",image=logo2)
+        boxes_[18].config(command=lambda :play(19),bg="#1c2127",image=logo2)
+        boxes_[19].config(command=lambda :play(20),bg="#1c2127",image=logo2)
+        boxes_[20].config(command=lambda :play(21),bg="#1c2127",image=logo2)
+        boxes_[21].config(command=lambda :play(22),bg="#1c2127",image=logo2)
+        boxes_[22].config(command=lambda :play(23),bg="#1c2127",image=logo2)
+        boxes_[23].config(command=lambda :play(24),bg="#1c2127",image=logo2)  
 
 
     print(take)
