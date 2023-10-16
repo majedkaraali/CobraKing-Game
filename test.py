@@ -243,130 +243,30 @@ def scoree():
 
     
 def new_game():
- #   root.attributes('-fullscreen', True)
-    global boxes,liste,img17,img18,img19,img20,img21,img22,img23,img24,info, div1,div2,boxes,ggame,remove,div3,info
-    global images_,logo2,img1,img2,img3,img4,img5,img6,img7,img8,gimg,bac,img9,img10,img11,img12,img13,img14,img15,img16,div22
+    root.attributes('-fullscreen', True)
+    global boxes,liste,img17,img18,img19,img20,img21,img22,img23,img24,info, div1,div2,boxes,ggame,div3,info
+    global images_,logo2,img1,img2,img3,img4,img5,img6,img7,img8,gimg,img9,img10,img11,img12,img13,img14,img15,img16,div22
     div22.destroy()
-    boxes=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
-    if len(liste)>0:
-            for i in range(len(liste)):
-                liste.pop(0)
-    i1=ImageTk.PhotoImage(Image.open("imgs/1.jpg"))
-    i2=ImageTk.PhotoImage(Image.open("imgs/2.jpg"))
-    i3=ImageTk.PhotoImage(Image.open("imgs/3.jpg"))
-    i4=ImageTk.PhotoImage(Image.open("imgs/4.jpg"))
-    i5=ImageTk.PhotoImage(Image.open("imgs/5.jpg"))
-    i6=ImageTk.PhotoImage(Image.open("imgs/6.jpg"))
-    i7=ImageTk.PhotoImage(Image.open("imgs/7.jpg"))
-    i8=ImageTk.PhotoImage(Image.open("imgs/8.jpg"))
-    i9=ImageTk.PhotoImage(Image.open("imgs/9.jpg"))
-    i10=ImageTk.PhotoImage(Image.open("imgs/10.jpg"))
-    i11=ImageTk.PhotoImage(Image.open("imgs/11.jpg"))
-    i12=ImageTk.PhotoImage(Image.open("imgs/12.jpg"))
-    
 
+    boxes=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     
+    liste.clear()
     logo2=ImageTk.PhotoImage(Image.open("imgs/logo2.jpg"),width=145,heigh=155)
 
-    liste.append(i1)
-    liste.append(i1)
-    liste.append(i2)
-    liste.append(i2)
-    liste.append(i3)
-    liste.append(i3)
-    liste.append(i4)
-    liste.append(i4)
-    liste.append(i5)
-    liste.append(i5)
-    liste.append(i6)
-    liste.append(i6)
-    liste.append(i7)
-    liste.append(i7)
-    liste.append(i8)
-    liste.append(i8)
-    liste.append(i9)
-    liste.append(i9)
-    liste.append(i10)
-    liste.append(i10)
-    liste.append(i11)
-    liste.append(i11)
-    liste.append(i12)
-    liste.append(i12)
+    for image in range(1,13):
+        print(image)
+        IMAGE=ImageTk.PhotoImage(Image.open(f"imgs/{image}.jpg"))
+       
+    
+        liste.append(IMAGE)
+        liste.append(IMAGE)
+       
+    for i in range(1,25):
+        image=random.choice(liste)
+        liste.remove(image)
+        images_.append(image)
 
-    img1=random.choice(liste)
 
-    liste.remove(img1)
-    img2=random.choice(liste)
-    
-    liste.remove(img2)
-    img3=random.choice(liste)
-    
-    liste.remove(img3)
-    img4=random.choice(liste)
-    
-    liste.remove(img4)
-    img5=random.choice(liste)
-    
-    liste.remove(img5)
-    img6=random.choice(liste)
-    
-    liste.remove(img6)
-    img7=random.choice(liste)
-    
-    liste.remove(img7)
-    img8=random.choice(liste)
-    
-    liste.remove(img8)
-    img9=random.choice(liste)
-    
-    liste.remove(img9)
-    img10=random.choice(liste)
-    
-    liste.remove(img10)
-    img11=random.choice(liste)
-    
-    liste.remove(img11)
-    img12=random.choice(liste)
-    
-    liste.remove(img12)
-    img13=random.choice(liste)
-    
-    liste.remove(img13)
-    img14=random.choice(liste)
-    
-    liste.remove(img14)
-    img15=random.choice(liste)
-    
-    liste.remove(img15)
-    img16=random.choice(liste)
-    
-    liste.remove(img16)
-    img17=random.choice(liste)
-    
-    liste.remove(img17)   
-    img18=random.choice(liste)
-    
-    liste.remove(img18)
-    img19=random.choice(liste)
-    
-    liste.remove(img19)
-    img20=random.choice(liste)
-    
-    liste.remove(img20)
-    img21=random.choice(liste)
-    
-    liste.remove(img21)
-    img22=random.choice(liste)
-    
-    liste.remove(img22)
-    img23=random.choice(liste)
-    
-    liste.remove(img23)
-    img24=random.choice(liste)
-    
-    liste.remove(img24)
-
-    images_.extend([img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20,img21,img22,img23,img24])
     frames()
     
 
