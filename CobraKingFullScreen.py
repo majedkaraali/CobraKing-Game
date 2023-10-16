@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import subprocess
 import sys
 import time
@@ -8,19 +5,6 @@ import time
 
 def install(package):
     subprocess.call([sys.executable, "-m", "pip", "install", package])
-
-
-print("-Code By Majed")
-
-
-
-time.sleep(1)
-print("Welcome to the game / Oyuna hoş geldiniz")
-time.sleep(1)
-print("Checking required libraries / Gerekli kütüphaneler kontrol ediliyor")
-time.sleep(1)
-print("Required libraries are [tkinter,Pillow] / gerekli kütüphaneler [tkinter,Pillow,playsound]")
-time.sleep(1)
 
 try:
     print("[GAME] Trying to import tkinter ")
@@ -53,41 +37,39 @@ except:
 
 from tkinter import *
 from PIL import Image,ImageTk
-
 import random
 import time
 import threading
+
+
 root=Tk()
 root.title("CobraKing")
 root.iconbitmap("imgs/1c.ico")
 #root.geometry("800x600")
 
+boxes_=[]
+images_=[]
+
 
 ggame=0
 win=0
+sayac=0
 score=0
 score2=0
-liste=[] 
-sayac=0
-take=[]
-games=[]
 player=1
+
+liste=[] 
+take=[]
+collected=[]
+games=[]
+
 #root.attributes('-fullscreen', True)
 gimg=ImageTk.PhotoImage(Image.open("imgs/bg7.jpg"))
 
-class box:
-    def __init__(self,image,card):
-        self.image=image
-        self.card=card
-        self.is_open=False
+def chek_effect(true:bool):
+    pass
 
-
-    def open_box(self):
-        print('Method run')
-
-
-
-def lounch():
+def louncher():
     
     global gimg,div22,info,div
     div=Label(root,image=gimg,width=730,heigh=400,bg="#202529")
@@ -104,39 +86,28 @@ def lounch():
     info.place(x=690,y=10)
 
 
-def slp():
-    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,div1,boxes
-    global take,remove,win,score,player,score2,box17,box18,box19,box20,box21,box22,box23,box24,info
-    box1.config(command="None")
-    box2.config(command="None")
-    box3.config(command="None")
-    box4.config(command="None")
-    box5.config(command="None")
-    box6.config(command="None")
-    box7.config(command="None")
-    box8.config(command="None")
-    box9.config(command="None")
-    box10.config(command="None")
-    box11.config(command="None")
-    box12.config(command="None")
-    box13.config(command="None")
-    box14.config(command="None")
-    box15.config(command="None")
-    box16.config(command="None")
-    box17.config(command="None")
-    box18.config(command="None")
-    box19.config(command="None")
-    box20.config(command="None")
-    box21.config(command="None")
-    box22.config(command="None")
-    box23.config(command="None")
-    box24.config(command="None")
+
+    
+
+def check():
+    global sayac,div2,div1,boxes,boxes_
+    global take,win,score,player,score2,info
+    # THIS LOCKS OTHER BOXES 
+    
+
+    for box in boxes_:
+        box.config(command="None")
+
+
     time.sleep(0.5)
 
+
     if liste[0]==liste[1]:
-        trac_game("Closed_Boxes")
-        score=int(score)
-        score2=int(score2)
+        trac_game("match_rol",match=True)
+
+        for i in take:
+            collected.append(i)
+
         if player==1:
             player=1
             score+=10
@@ -144,138 +115,74 @@ def slp():
             score2+=10
             player==2
             
-        win=1
-       
-        for i in take:
-            boxes.remove(i)
-        
-        wr=Label(div2,text="Correct!  ",fg="green",font=("BLOD",18),bg="#282828")
-        wr.place(x=580,y=15)
-        time.sleep(1)
-        wr.destroy()
-
-        
         
     else:
+        trac_game("false_rol",match=False)
         if player==1:
             player=2
         elif player==2:
             player=1
       
+       
+
+
+    for i in range(1, 25):
+        if i not in collected:
+            boxes_[i - 1].config(command=lambda i=i: play(i), bg="#1c2127", image=logo2)
+
+
+    take.clear()
+    liste.clear()
+    
+    
+    
+    
+
+
+
+    
+def trac_game(info,match:bool):
+    global games,win,score,score2
+    score=int(score)
+    score2=int(score2)
+    print(match)
+    if match:
+        win=1
+        crr=Label(div2,text="Correct!  ",fg="green",font=("BLOD",18),bg="#282828")
+        crr.place(x=580,y=15)
+        time.sleep(1)
+        crr.destroy()
+
+    else:
         wr=Label(div2,text="Wrong!  ",fg="red",font=("BLOD",18),bg="#282828")
         wr.place(x=580,y=15)
         time.sleep(1)
         wr.destroy()
-        for i in take:
-            if i ==1:
-                box1=Button(div1,command=lambda :play(1),bg="#1c2127",image=logo2)
-                box1.place(x=10,y=10)
-            elif i==2:
-                box2=Button(div1,command=lambda :play(2),bg="#1c2127",image=logo2)
-                box2.place(x=168,y=10)
-            elif i==3:
-                box3=Button(div1,command=lambda :play(3),bg="#1c2127",image=logo2)
-                box3.place(x=326,y=10)
-            elif i==4:
-                box4=Button(div1,command=lambda :play(4),bg="#1c2127",image=logo2)
-                box4.place(x=484,y=10)
-            elif i==5:
-                box5=Button(div1,command=lambda :play(5),bg="#1c2127",image=logo2)
-                box5.place(x=642,y=10)
-            elif i==6:
-                box6=Button(div1,command=lambda :play(6),bg="#1c2127",image=logo2)
-                box6.place(x=800,y=10)
-            elif i==7:
-                box7=Button(div1,command=lambda :play(7),bg="#1c2127",image=logo2)
-                box7.place(x=958,y=10)
-            elif i==8:
-                box8=Button(div1,command=lambda :play(8),bg="#1c2127",image=logo2)
-                box8.place(x=1116,y=10)
-            elif i==9:
-                box9=Button(div1,command=lambda :play(9),bg="#1c2127",image=logo2)
-                box9.place(x=10,y=176)
-            elif i==10:
-                box10=Button(div1,command=lambda :play(10),bg="#1c2127",image=logo2)
-                box10.place(x=168,y=176)
-            elif i==11:
-                box11=Button(div1,command=lambda :play(11),bg="#1c2127",image=logo2)
-                box11.place(x=326,y=176)
-            elif i==12:
-                box12=Button(div1,command=lambda :play(12),bg="#1c2127",image=logo2)
-                box12.place(x=484,y=176)
-            elif i==13:
-                box13=Button(div1,command=lambda :play(13),bg="#1c2127",image=logo2)
-                box13.place(x=642,y=176)
-            elif i==14:
-                box14=Button(div1,command=lambda :play(14),bg="#1c2127",image=logo2)
-                box14.place(x=800,y=176)
-            elif i==15:
-                box15=Button(div1,command=lambda :play(15),bg="#1c2127",image=logo2)
-                box15.place(x=958,y=176)
-            elif i==16:
-                box16=Button(div1,command=lambda :play(16),bg="#1c2127",image=logo2)
-                box16.place(x=1116,y=176)
-            elif i==17:
-                box17=Button(div1,command=lambda :play(17),bg="#1c2127",image=logo2)
-                box17.place(x=10,y=342)
-            elif i==18:
-                box18=Button(div1,command=lambda :play(18),bg="#1c2127",image=logo2)
-                box18.place(x=168,y=342)
-            elif i==19:
-                box19=Button(div1,command=lambda :play(19),bg="#1c2127",image=logo2)
-                box19.place(x=326,y=342)
-            elif i==20:
-                box20=Button(div1,command=lambda :play(20),bg="#1c2127",image=logo2)
-                box20.place(x=484,y=342)
-            elif i==21:
-                box21=Button(div1,command=lambda :play(21),bg="#1c2127",image=logo2)
-                box21.place(x=642,y=342)
-            elif i==22:
-                box22=Button(div1,command=lambda :play(22),bg="#1c2127",image=logo2)
-                box22.place(x=800,y=342)
-            elif i==23:
-                box23=Button(div1,command=lambda :play(23),bg="#1c2127",image=logo2)
-                box23.place(x=958,y=342)
-            elif i==24:
-                box24=Button(div1,command=lambda :play(24),bg="#1c2127",image=logo2)
-                box24.place(x=1116,y=342)
-    
-    if len(liste)>1:
-        for i in range(len(liste)):
-            liste.pop(0)
-        for i in range(len(take)):
-            take.pop(0)
 
-    
-    
     scoree()
-    
 
-
-
-    
-def trac_game(info):
-    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div1,boxes
-    score,box17,box18,box19,box20,box21,box22,box23,box24
-    global games
     games.append(info)
-    if len(games)==12:
-        show_in()
+
+    if games.count('match_rol')==12:
+        result()
 
 
-def show_in():
+
+def result():
     global div112
     time.sleep(2)
     div.destroy()
     div1.destroy()
     div112=Frame(root,bg="#2E8B57")
     div112.grid(row=1,column=0,ipadx=900,ipady=340)
-
+    print(score,score2)
     if score>score2:
         winlab=Label(div112,text="Winner is Player1  ",fg="white",bg="#282828",font=("Times",42))
         
-    else:
+    elif  score<score2:
         winlab=Label(div112,text="Winner is Player2  ",fg="white",bg="#282828",font=("Times",42))
+    else:
+        winlab=Label(div112,text="No Winner   ,   TIE  ",fg="white",bg="#282828",font=("Times",42))
     
     winlab.place(x=380,y=302)
     
@@ -285,60 +192,11 @@ def show_in():
  
 
 def scoree():
-    global div1,boxes,ggame,remove,score,score2,box17,box18,box19,box20,box21,box22,box23,box24,div1,div2,boxes,ggame,remove,div3,info
-    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,remove,take
+    global div1,boxes,ggame,remove,score,score2,div1,div2,boxes,ggame,remove,div3
+    global boxes_,sayac,div2,remove,take
+ 
     
-    for i in boxes:
-        if i==1:
-            box1.config(command=lambda :play(1))
-        elif i==2:
-            box2.config(command=lambda :play(2))
-        elif i==3:
-            box3.config(command=lambda :play(3))
-        elif i==4:
-            box4.config(command=lambda :play(4))
-        elif i==5:
-            box5.config(command=lambda :play(5))
-        elif i==6:
-            box6.config(command=lambda :play(6))
-        elif i==7:
-            box7.config(command=lambda :play(7))
-        elif i==8:
-            box8.config(command=lambda :play(8))
-        elif i==9:
-            box9.config(command=lambda :play(9))
-        elif i==10:
-            box10.config(command=lambda :play(10))
-        elif i==11:
-            box11.config(command=lambda :play(11))
-        elif i==12:
-            box12.config(command=lambda :play(12))
-        elif i==13:
-            box13.config(command=lambda :play(13))
-        elif i==14:
-            box14.config(command=lambda :play(14))
-        elif i==15:
-            box15.config(command=lambda :play(15))
-        elif i==16:
-            box16.config(command=lambda :play(16))
-        elif i==17:
-            box17.config(command=lambda :play(17))
-        elif i==18:
-            box18.config(command=lambda :play(18))
-        elif i==19:
-            box19.config(command=lambda :play(19))
-        elif i==20:
-            box20.config(command=lambda :play(20))
-        elif i==21:
-            box21.config(command=lambda :play(21))
-        elif i==22:
-            box22.config(command=lambda :play(22))
-        elif i==23:
-            box23.config(command=lambda :play(23))
-        elif i==24:
-            box24.config(command=lambda :play(24))
 
-    
     
     score=str(score)
     score2=str(score2)
@@ -361,130 +219,34 @@ def scoree():
 
     
     
+
+
+    
 def new_game():
     root.attributes('-fullscreen', True)
-    global boxes,liste,img17,img18,img19,img20,img21,img22,img23,img24,info, div1,div2,boxes,ggame,remove,div3,info
-    global logo2,img1,img2,img3,img4,img5,img6,img7,img8,gimg,bac,img9,img10,img11,img12,img13,img14,img15,img16,div22
+    global boxes,liste,div2,boxes,ggame,div3,info
+    global images_,logo2,div22
     div22.destroy()
-    boxes=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
-    if len(liste)>0:
-            for i in range(len(liste)):
-                liste.pop(0)
-    i1=ImageTk.PhotoImage(Image.open("imgs/1.jpg"))
-    i2=ImageTk.PhotoImage(Image.open("imgs/2.jpg"))
-    i3=ImageTk.PhotoImage(Image.open("imgs/3.jpg"))
-    i4=ImageTk.PhotoImage(Image.open("imgs/4.jpg"))
-    i5=ImageTk.PhotoImage(Image.open("imgs/5.jpg"))
-    i6=ImageTk.PhotoImage(Image.open("imgs/6.jpg"))
-    i7=ImageTk.PhotoImage(Image.open("imgs/7.jpg"))
-    i8=ImageTk.PhotoImage(Image.open("imgs/8.jpg"))
-    i9=ImageTk.PhotoImage(Image.open("imgs/9.jpg"))
-    i10=ImageTk.PhotoImage(Image.open("imgs/10.jpg"))
-    i11=ImageTk.PhotoImage(Image.open("imgs/11.jpg"))
-    i12=ImageTk.PhotoImage(Image.open("imgs/12.jpg"))
-    
 
+    boxes=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     
+    liste.clear()
     logo2=ImageTk.PhotoImage(Image.open("imgs/logo2.jpg"),width=145,heigh=155)
 
-    liste.append(i1)
-    liste.append(i1)
-    liste.append(i2)
-    liste.append(i2)
-    liste.append(i3)
-    liste.append(i3)
-    liste.append(i4)
-    liste.append(i4)
-    liste.append(i5)
-    liste.append(i5)
-    liste.append(i6)
-    liste.append(i6)
-    liste.append(i7)
-    liste.append(i7)
-    liste.append(i8)
-    liste.append(i8)
-    liste.append(i9)
-    liste.append(i9)
-    liste.append(i10)
-    liste.append(i10)
-    liste.append(i11)
-    liste.append(i11)
-    liste.append(i12)
-    liste.append(i12)
+    for image in range(1,13):
+        print(image)
+        IMAGE=ImageTk.PhotoImage(Image.open(f"imgs/{image}.jpg"))
+       
+    
+        liste.append(IMAGE)
+        liste.append(IMAGE)
+       
+    for i in range(1,25):
+        image=random.choice(liste)
+        liste.remove(image)
+        images_.append(image)
 
-    img1=random.choice(liste)
-    
-    liste.remove(img1)
-    img2=random.choice(liste)
-    
-    liste.remove(img2)
-    img3=random.choice(liste)
-    
-    liste.remove(img3)
-    img4=random.choice(liste)
-    
-    liste.remove(img4)
-    img5=random.choice(liste)
-    
-    liste.remove(img5)
-    img6=random.choice(liste)
-    
-    liste.remove(img6)
-    img7=random.choice(liste)
-    
-    liste.remove(img7)
-    img8=random.choice(liste)
-    
-    liste.remove(img8)
-    img9=random.choice(liste)
-    
-    liste.remove(img9)
-    img10=random.choice(liste)
-    
-    liste.remove(img10)
-    img11=random.choice(liste)
-    
-    liste.remove(img11)
-    img12=random.choice(liste)
-    
-    liste.remove(img12)
-    img13=random.choice(liste)
-    
-    liste.remove(img13)
-    img14=random.choice(liste)
-    
-    liste.remove(img14)
-    img15=random.choice(liste)
-    
-    liste.remove(img15)
-    img16=random.choice(liste)
-    
-    liste.remove(img16)
-    img17=random.choice(liste)
-    
-    liste.remove(img17)   
-    img18=random.choice(liste)
-    
-    liste.remove(img18)
-    img19=random.choice(liste)
-    
-    liste.remove(img19)
-    img20=random.choice(liste)
-    
-    liste.remove(img20)
-    img21=random.choice(liste)
-    
-    liste.remove(img21)
-    img22=random.choice(liste)
-    
-    liste.remove(img22)
-    img23=random.choice(liste)
-    
-    liste.remove(img23)
-    img24=random.choice(liste)
-    
-    liste.remove(img24)
-   
+
     frames()
     
 
@@ -518,8 +280,8 @@ def frames():
     
     
 def game():
-    global div1,boxes,ggame,remove,score,score2,box17,box18,box19,box20,box21,box22,box23,box24,div1,div2,boxes,ggame,remove,div3,info
-    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,remove,take
+    global div1,boxes,ggame,score,score2,box17,box18,box19,box20,box21,box22,box23,box24,div1,div2,boxes,ggame,remove,div3,info
+    global boxes_,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,remove,take
     
     box1=Button(div1,command=lambda :play(1),bg="#1c2127",image=logo2)
     box2=Button(div1,command=lambda :play(2),bg="#1c2127",image=logo2)
@@ -572,9 +334,9 @@ def game():
     box22.place(x=800,y=342)
     box23.place(x=958,y=342)
     box24.place(x=1116,y=342)
-    
 
 
+    boxes_.extend([box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,box17,box18,box19,box20,box21,box22,box23,box24])
 
 
 
@@ -602,177 +364,22 @@ def game():
     
 def play(a):
     
-    global div1,div2,boxes,ggame,remove,div3,info,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,div1,remove,take,ggame,info
+    global boxes_ ,div1,div2,boxes,ggame,remove,div3,info,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,div1,remove,take,ggame,info
     ggame+=1
+
     
-    if a==1:
-        box1['command'] = 0
-        box1.config(image=img1,bg="white")
 
-        sayac+=1
-        liste.append(img1)
-        take.append(a)
-    elif a==2:
-        box2['command'] = 0
-        box2.config(image=img2,bg="white")
-        sayac+=1
-        liste.append(img2)
-        take.append(a)
-    elif a==3:
-
-        box3.config(image=img3,bg="white")
-        sayac+=1
-        liste.append(img3)
-        take.append(a)
-    elif a==4:
-        box4['command'] = 0
-        box4.config(image=img4,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img4)
-        take.append(a)
-
-    elif a==5:
-        box5['command'] = 0
-        box5.config(image=img5,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img5)
-        take.append(a)
-        box5['command'] = 0
-    elif a==6:
-        box6['command'] = 0
-        box6.config(image=img6,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img6)
-        take.append(a)
-          
-    elif a==7:
-        box7['command'] = 0
-        box7.config(image=img7,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img7)
-        take.append(a)
-        
-    elif a==8:
-        box8['command'] = 0
-        box8.config(image=img8,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img8)
-        take.append(a)
-    elif a==9:
-        box9['command'] = 0
-        box9.config(image=img9,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img9)
-        take.append(a)
-        
-
-    elif a==10:
-        box10['command'] = 0
-        box10.config(image=img10,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img10)
-        take.append(a)
-        
-    elif a==11:
-        box11['command'] = 0
-        box11.config(image=img11,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img11)
-        take.append(a)
-        
-    elif a==12:
-        box12['command'] = 0
-        box12.config(image=img12,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img12)
-        take.append(a)
-        
-        
-    elif a==13:
-        box13['command'] = 0
-        box13.config(image=img13,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img13)
-        take.append(a)
-        
-        
-    elif a==14:
-        box14['command'] = 0
-        box14.config(image=img14,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img14)
-        take.append(a)
-        
-        
-    elif a==15:
-        box15['command'] = 0
-        box15.config(image=img15,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img15)
-        take.append(a)
-            
-    elif a==16:
-        box16['command'] = 0
-        box16.config(image=img16,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img16)
-        take.append(a)
-    elif a==17:
-        box17['command'] = 0
-        box17.config(image=img17,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img17)
-        take.append(a)
-    elif a==18:
-        box18['command'] = 0
-        box18.config(image=img18,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img18)
-        take.append(a)
-    elif a==19:
-        box19['command'] = 0
-        box19.config(image=img19,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img19)
-        take.append(a)
-    elif a==20:
-        box20['command'] = 0
-        box20.config(image=img20,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img20)
-        take.append(a)
-    elif a==21:
-        box21['command'] = 0
-        box21.config(image=img21,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img21)
-        take.append(a)
-    elif a==22:
-        box22['command'] = 0
-        box22.config(image=img22,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img22)
-        take.append(a)
-    elif a==23:
-        box23['command'] = 0
-        box23.config(image=img23,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img23)
-        take.append(a)
-    elif a==24:
-        box24['command'] = 0
-        box24.config(image=img24,width=145,heigh=155,bg="white")
-        sayac+=1
-        liste.append(img24)
-        take.append(a)
-    
-               
+    boxes_[a-1].config(command = 0)
+    boxes_[a-1].config(image=images_[a-1],bg="white")
+    liste.append(images_[a-1])
+    take.append(a)
+    sayac+=1   
         
     if sayac==2:
         sayac=0
-        threading.Thread(target=slp).start()
+        threading.Thread(target=check).start()
         
- 
+    print(take)
              
         
 
@@ -832,13 +439,13 @@ def menuu():
         take.pop(0)
     score=0
     score2=0
-    lounch()
+    louncher()
     
 
     
     
     
-lounch()
+louncher()
 
 root.mainloop()
 

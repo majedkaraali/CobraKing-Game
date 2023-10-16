@@ -135,7 +135,7 @@ def check():
     liste.clear()
     
     
-    scoree()
+    
     
 
 
@@ -159,6 +159,7 @@ def trac_game(info,match:bool):
         time.sleep(1)
         wr.destroy()
 
+    scoree()
 
     games.append(info)
 
