@@ -92,9 +92,11 @@ def louncher():
 def check():
     global sayac,div2,div1,boxes,boxes_
     global take,win,score,player,score2,info
+    score=int(score)
+    score2=int(score2)
     # THIS LOCKS OTHER BOXES 
     
-
+ 
     for box in boxes_:
         box.config(command="None")
 
@@ -103,7 +105,7 @@ def check():
 
 
     if liste[0]==liste[1]:
-        trac_game("match_rol",match=True)
+        
 
         for i in take:
             collected.append(i)
@@ -114,15 +116,18 @@ def check():
         elif player==2:
             score2+=10
             player==2
+
+        trac_game("match_rol",match=True)
             
         
+        
     else:
-        trac_game("false_rol",match=False)
+        
         if player==1:
             player=2
         elif player==2:
             player=1
-      
+        trac_game("false_rol",match=False)
        
 
 
@@ -143,15 +148,14 @@ def check():
     
 def trac_game(info,match:bool):
     global games,win,score,score2
-    score=int(score)
-    score2=int(score2)
-    print(match)
+
     if match:
         win=1
         crr=Label(div2,text="Correct!  ",fg="green",font=("BLOD",18),bg="#282828")
         crr.place(x=580,y=15)
         time.sleep(1)
         crr.destroy()
+
 
     else:
         wr=Label(div2,text="Wrong!  ",fg="red",font=("BLOD",18),bg="#282828")
@@ -196,7 +200,8 @@ def scoree():
     global boxes_,sayac,div2,remove,take
  
     
-
+    print('RUNssssssssssss')
+    print(score,score2)
     
     score=str(score)
     score2=str(score2)
@@ -206,6 +211,9 @@ def scoree():
     lab2=Label(div2,text="Player2 Score :"+score2,fg="white",bg="#282828",font=("Times",14))
     lab2.place(x=10,y=34)
     
+    score=int(score)
+    score2=int(score2)
+
     if player==1:
         pl=Label(div2,text="Player 1",font=("Times" ,20),fg="white",bg="#282828")
     elif player==2:
@@ -223,7 +231,8 @@ def scoree():
 
     
 def new_game():
-    root.attributes('-fullscreen', True)
+    print('FULL ')
+#root.attributes('-fullscreen', True)
     global boxes,liste,div2,boxes,ggame,div3,info
     global images_,logo2,div22
     div22.destroy()
@@ -390,11 +399,13 @@ def restart():
     div1.destroy()
     div2.destroy()
     div3.destroy()
-    div112.destroy()
-    for i in range(len(liste)):
-        liste.pop(0)
-    for i in range(len(take)):
-        take.pop(0)
+
+
+
+    boxes_.clear()
+    liste.clear()
+    take.clear()
+
     score=0
     score2=0
     new_game()
