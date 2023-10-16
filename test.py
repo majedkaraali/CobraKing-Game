@@ -14,6 +14,8 @@ print("-Code By Majed")
 
 
 
+
+
 time.sleep(1)
 print("Welcome to the game / Oyuna hoş geldiniz")
 time.sleep(1)
