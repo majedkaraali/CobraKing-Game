@@ -75,20 +75,11 @@ score2=0
 liste=[] 
 sayac=0
 take=[]
+collected=[]
 games=[]
 player=1
 #root.attributes('-fullscreen', True)
 gimg=ImageTk.PhotoImage(Image.open("imgs/bg7.jpg"))
-
-class box:
-    def __init__(self,image,card):
-        self.image=image
-        self.card=card
-        self.is_open=False
-
-
-    def open_box(self):
-        print('Method run')
 
 
 
@@ -115,17 +106,24 @@ def lounch():
 def check():
     global sayac,div2,div1,boxes,boxes_
     global take,remove,win,score,player,score2,info
-    print('CHEEEEEEEEEEEEEEEk')
     # THIS LOCKS OTHER BOXES 
+    
+    print(take,'take')
+   
+
     for box in boxes_:
         box.config(command="None")
- 
+
+
     time.sleep(0.5)
 
     if liste[0]==liste[1]:
         trac_game("Closed_Boxes")
         score=int(score)
         score2=int(score2)
+
+        for i in take:
+            collected.append(i)
 
         if player==1:
             player=1
@@ -143,10 +141,6 @@ def check():
         time.sleep(1)
         crr.destroy()
 
-        
-
-        
-
 
         
     else:
@@ -159,39 +153,15 @@ def check():
         wr.place(x=580,y=15)
         time.sleep(1)
         wr.destroy()
-        print('>>>>>>>>>assssssssssssssdddddddd')
-
-        # for i in range(1,25):
-        #     print(i,'done')
-        #     boxes_[i-1].config(command=lambda :play(i),bg="#1c2127",image=logo2)
-
-        boxes_[0].config(command=lambda :play(1),bg="#1c2127",image=logo2)
-        boxes_[1].config(command=lambda :play(2),bg="#1c2127",image=logo2)
-        boxes_[2].config(command=lambda :play(3),bg="#1c2127",image=logo2)
-        boxes_[3].config(command=lambda :play(4),bg="#1c2127",image=logo2)
-        boxes_[4].config(command=lambda :play(5),bg="#1c2127",image=logo2)
-        boxes_[5].config(command=lambda :play(6),bg="#1c2127",image=logo2)
-        boxes_[6].config(command=lambda :play(7),bg="#1c2127",image=logo2)
-        boxes_[7].config(command=lambda :play(8),bg="#1c2127",image=logo2)
-        boxes_[8].config(command=lambda :play(9),bg="#1c2127",image=logo2)
-        boxes_[9].config(command=lambda :play(10),bg="#1c2127",image=logo2)
-        boxes_[10].config(command=lambda :play(11),bg="#1c2127",image=logo2)
-        boxes_[11].config(command=lambda :play(12),bg="#1c2127",image=logo2)
-        boxes_[12].config(command=lambda :play(13),bg="#1c2127",image=logo2)
-        boxes_[13].config(command=lambda :play(14),bg="#1c2127",image=logo2)
-        boxes_[14].config(command=lambda :play(15),bg="#1c2127",image=logo2)
-        boxes_[15].config(command=lambda :play(16),bg="#1c2127",image=logo2)
-        boxes_[16].config(command=lambda :play(17),bg="#1c2127",image=logo2)
-        boxes_[17].config(command=lambda :play(18),bg="#1c2127",image=logo2)
-        boxes_[18].config(command=lambda :play(19),bg="#1c2127",image=logo2)
-        boxes_[19].config(command=lambda :play(20),bg="#1c2127",image=logo2)
-        boxes_[20].config(command=lambda :play(21),bg="#1c2127",image=logo2)
-        boxes_[21].config(command=lambda :play(22),bg="#1c2127",image=logo2)
-        boxes_[22].config(command=lambda :play(23),bg="#1c2127",image=logo2)
-        boxes_[23].config(command=lambda :play(24),bg="#1c2127",image=logo2)  
 
 
-    print(take)
+    for i in range(1, 25):
+        if i not in collected:
+            boxes_[i - 1].config(command=lambda i=i: play(i), bg="#1c2127", image=logo2)
+
+
+      
+
     print(liste,'ls') 
 
     take.clear()
@@ -246,7 +216,7 @@ def scoree():
     global boxes_,sayac,div2,remove,take
  
     
-    print(take)
+
     
     score=str(score)
     score2=str(score2)
