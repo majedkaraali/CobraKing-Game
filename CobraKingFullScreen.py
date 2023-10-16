@@ -379,7 +379,6 @@ def play(a):
         sayac=0
         threading.Thread(target=check).start()
         
-    print(take)
              
         
 
