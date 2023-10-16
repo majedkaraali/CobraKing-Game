@@ -103,7 +103,7 @@ def check():
 
 
     if liste[0]==liste[1]:
-        trac_game("new_rol",match=True)
+        trac_game("match_rol",match=True)
 
         for i in take:
             collected.append(i)
@@ -117,7 +117,7 @@ def check():
             
         
     else:
-        trac_game("new_rol",match=False)
+        trac_game("false_rol",match=False)
         if player==1:
             player=2
         elif player==2:
@@ -142,10 +142,10 @@ def check():
 
     
 def trac_game(info,match:bool):
-    global games,win
+    global games,win,score,score2
     score=int(score)
     score2=int(score2)
-
+    print(match)
     if match:
         win=1
         crr=Label(div2,text="Correct!  ",fg="green",font=("BLOD",18),bg="#282828")
@@ -161,8 +161,10 @@ def trac_game(info,match:bool):
 
 
     games.append(info)
-    if len(games)==12:
+
+    if games.count('match_rol')==12:
         result()
+
 
 
 def result():
@@ -172,7 +174,7 @@ def result():
     div1.destroy()
     div112=Frame(root,bg="#2E8B57")
     div112.grid(row=1,column=0,ipadx=900,ipady=340)
-
+    print(score,score2)
     if score>score2:
         winlab=Label(div112,text="Winner is Player1  ",fg="white",bg="#282828",font=("Times",42))
         
