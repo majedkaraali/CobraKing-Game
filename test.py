@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import subprocess
 import sys
 import time
@@ -8,21 +5,6 @@ import time
 
 def install(package):
     subprocess.call([sys.executable, "-m", "pip", "install", package])
-
-
-print("-Code By Majed")
-
-
-
-
-
-time.sleep(1)
-print("Welcome to the game / Oyuna hoş geldiniz")
-time.sleep(1)
-print("Checking required libraries / Gerekli kütüphaneler kontrol ediliyor")
-time.sleep(1)
-print("Required libraries are [tkinter,Pillow] / gerekli kütüphaneler [tkinter,Pillow,playsound]")
-time.sleep(1)
 
 try:
     print("[GAME] Trying to import tkinter ")
@@ -55,10 +37,11 @@ except:
 
 from tkinter import *
 from PIL import Image,ImageTk
-
 import random
 import time
 import threading
+
+
 root=Tk()
 root.title("CobraKing")
 root.iconbitmap("imgs/1c.ico")
@@ -70,20 +53,23 @@ images_=[]
 
 ggame=0
 win=0
+sayac=0
 score=0
 score2=0
+player=1
+
 liste=[] 
-sayac=0
 take=[]
 collected=[]
 games=[]
-player=1
+
 #root.attributes('-fullscreen', True)
 gimg=ImageTk.PhotoImage(Image.open("imgs/bg7.jpg"))
 
+def chek_effect(true:bool):
+    pass
 
-
-def lounch():
+def louncher():
     
     global gimg,div22,info,div
     div=Label(root,image=gimg,width=730,heigh=400,bg="#202529")
@@ -105,11 +91,9 @@ def lounch():
 
 def check():
     global sayac,div2,div1,boxes,boxes_
-    global take,remove,win,score,player,score2,info
+    global take,win,score,player,score2,info
     # THIS LOCKS OTHER BOXES 
     
-    print(take,'take')
-   
 
     for box in boxes_:
         box.config(command="None")
@@ -117,10 +101,9 @@ def check():
 
     time.sleep(0.5)
 
+
     if liste[0]==liste[1]:
-        trac_game("Closed_Boxes")
-        score=int(score)
-        score2=int(score2)
+        trac_game("new_rol",match=True)
 
         for i in take:
             collected.append(i)
@@ -132,27 +115,15 @@ def check():
             score2+=10
             player==2
             
-        win=1
-       
-        
-        
-        crr=Label(div2,text="Correct!  ",fg="green",font=("BLOD",18),bg="#282828")
-        crr.place(x=580,y=15)
-        time.sleep(1)
-        crr.destroy()
-
-
         
     else:
+        trac_game("new_rol",match=False)
         if player==1:
             player=2
         elif player==2:
             player=1
       
-        wr=Label(div2,text="Wrong!  ",fg="red",font=("BLOD",18),bg="#282828")
-        wr.place(x=580,y=15)
-        time.sleep(1)
-        wr.destroy()
+       
 
 
     for i in range(1, 25):
@@ -160,17 +131,8 @@ def check():
             boxes_[i - 1].config(command=lambda i=i: play(i), bg="#1c2127", image=logo2)
 
 
-      
-
-    print(liste,'ls') 
-
     take.clear()
-    if len(liste)>1:
-        for i in range(len(liste)):
-            liste.pop(0)
-        for i in range(len(take)):
-            take.pop(0)
-
+    liste.clear()
     
     
     scoree()
@@ -179,16 +141,31 @@ def check():
 
 
     
-def trac_game(info):
-    global box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div1,boxes
-    score,box17,box18,box19,box20,box21,box22,box23,box24
-    global games
+def trac_game(info,match:bool):
+    global games,win
+    score=int(score)
+    score2=int(score2)
+
+    if match:
+        win=1
+        crr=Label(div2,text="Correct!  ",fg="green",font=("BLOD",18),bg="#282828")
+        crr.place(x=580,y=15)
+        time.sleep(1)
+        crr.destroy()
+
+    else:
+        wr=Label(div2,text="Wrong!  ",fg="red",font=("BLOD",18),bg="#282828")
+        wr.place(x=580,y=15)
+        time.sleep(1)
+        wr.destroy()
+
+
     games.append(info)
     if len(games)==12:
-        show_in()
+        result()
 
 
-def show_in():
+def result():
     global div112
     time.sleep(2)
     div.destroy()
@@ -300,7 +277,7 @@ def frames():
     
     
 def game():
-    global div1,boxes,ggame,remove,score,score2,box17,box18,box19,box20,box21,box22,box23,box24,div1,div2,boxes,ggame,remove,div3,info
+    global div1,boxes,ggame,score,score2,box17,box18,box19,box20,box21,box22,box23,box24,div1,div2,boxes,ggame,remove,div3,info
     global boxes_,box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,sayac,div2,remove,take
     
     box1=Button(div1,command=lambda :play(1),bg="#1c2127",image=logo2)
@@ -459,13 +436,13 @@ def menuu():
         take.pop(0)
     score=0
     score2=0
-    lounch()
+    louncher()
     
 
     
     
     
-lounch()
+louncher()
 
 root.mainloop()
 
