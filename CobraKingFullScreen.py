@@ -179,7 +179,6 @@ def result():
     div1.destroy()
     div112=Frame(root,bg="#2E8B57")
     div112.grid(row=1,column=0,ipadx=900,ipady=340)
-    print(score,score2)
     if score>score2:
         winlab=Label(div112,text="Winner is Player1  ",fg="white",bg="#282828",font=("Times",42))
         
@@ -198,10 +197,7 @@ def result():
 def scoree():
     global div1,boxes,ggame,remove,score,score2,div1,div2,boxes,ggame,remove,div3
     global boxes_,sayac,div2,remove,take
- 
-    
-    print('RUNssssssssssss')
-    print(score,score2)
+
     
     score=str(score)
     score2=str(score2)
@@ -231,8 +227,8 @@ def scoree():
 
     
 def new_game():
-    print('FULL ')
-#root.attributes('-fullscreen', True)
+
+    root.attributes('-fullscreen', True)
     global boxes,liste,div2,boxes,ggame,div3,info
     global images_,logo2,div22
     div22.destroy()
@@ -243,7 +239,7 @@ def new_game():
     logo2=ImageTk.PhotoImage(Image.open("imgs/logo2.jpg"),width=145,heigh=155)
 
     for image in range(1,13):
-        print(image)
+
         IMAGE=ImageTk.PhotoImage(Image.open(f"imgs/{image}.jpg"))
        
     
