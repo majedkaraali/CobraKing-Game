@@ -391,16 +391,14 @@ def play(a):
     
 
 def restart():
-    global score,score2,div,sup,info,div22,info,div3,div2,div1,div22
-    div1.destroy()
-    div2.destroy()
-    div3.destroy()
+    global score,score2,div,sup,info,div22,info,div3,div2,div1,div22,games
 
 
 
     boxes_.clear()
     liste.clear()
     take.clear()
+    games.clear()
 
     score=0
     score2=0
