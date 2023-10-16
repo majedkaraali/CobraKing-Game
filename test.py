@@ -244,8 +244,8 @@ def scoree():
     
 def new_game():
     root.attributes('-fullscreen', True)
-    global boxes,liste,img17,img18,img19,img20,img21,img22,img23,img24,info, div1,div2,boxes,ggame,div3,info
-    global images_,logo2,img1,img2,img3,img4,img5,img6,img7,img8,gimg,img9,img10,img11,img12,img13,img14,img15,img16,div22
+    global boxes,liste,div2,boxes,ggame,div3,info
+    global images_,logo2,div22
     div22.destroy()
 
     boxes=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
