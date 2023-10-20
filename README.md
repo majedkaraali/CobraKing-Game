@@ -9,4 +9,4 @@
 ![Untitled3](https://github.com/majedkaraali/CobraKing-Game/assets/47135751/03fb527b-1da9-4412-b3f9-1820ace6b3ed)
 
 
-Note:This is not OOP project and There are nont any class defined
+Note:This is not OOP based project and There are not any class defined
