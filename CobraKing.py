@@ -218,9 +218,7 @@ def scoree():
 
 
     
-    
-def func1():
-    print('Merhaba')
+
 
     
     
